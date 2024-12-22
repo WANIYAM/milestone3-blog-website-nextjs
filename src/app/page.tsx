@@ -1,5 +1,5 @@
 import { client, urlFor } from "./lib/sanity";
-import { simpleBlogCard } from "./lib/interface";
+import { SimpleBlogCard } from "./lib/interface";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -18,7 +18,7 @@ const data =  await client.fetch(query);
 return data;
 }
 export default async function Home() {
-  const data:simpleBlogCard[] = await getData();
+  const data:SimpleBlogCard[] = await getData();
 console.log(data)
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 mt-5 gap-5">
