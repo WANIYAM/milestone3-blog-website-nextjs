@@ -9,6 +9,7 @@ interface Image {
     };
 }
 
+
 // Define the simpleBlogCard interface
 export interface SimpleBlogCard {
     title: string;

@@ -1,8 +1,8 @@
+import Comments from "@/app/components/comments";
 import { FullBlog } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
-// import { Block } from '@sanity/types';
 
 async function getData(slug: string) {
     const query = `*[_type == "blog" && slug.current == '${slug}']{
@@ -22,7 +22,7 @@ export default async function BlogArticle({
     params: { slug: string };
 }) {
     const data: FullBlog | null = await getData(params.slug);
-    console.log(data);
+
     if (!data) {
         return <div>Blog not found</div>; // Handle the case where no data is returned
     }
@@ -42,9 +42,12 @@ export default async function BlogArticle({
                 priority
                 className="rounded-lg mt-8 border"
             />
-            <div className="mt-16 prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary prose-a:text-primary ">
-            <PortableText value={data.content}/>
+            <div className="mt-16 prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary prose-a:text-primary">
+                <PortableText value={data.content} />
             </div>
+
+            {/* Add the Comments section here */}
+            <Comments />
         </div>
     );
 }
